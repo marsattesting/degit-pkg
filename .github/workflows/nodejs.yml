@@ -11,7 +11,7 @@ jobs:
       matrix:
         arch: ['x64']
         node-version: [ '18' ]
-        OS: ['linux']
+        os: ['linux']
 
     steps:
     - uses: actions/checkout@v4
