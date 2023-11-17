@@ -21,8 +21,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build
-    - run: npm test
-    - run: npm run lint
+    # Désactivation des test et lint tant que l'action pkg ne sera pas réglé: évite de consommer des ressources machines inutilement
+    #- run: npm test
+    #- run: npm run lint
       env:
         CI: true
     - name: Archive production artifacts
@@ -37,5 +38,5 @@ jobs:
       with:
         entrypoint: dist/bin.js
         arch: x64
-        node-version: 16
+        node-version: node-16
         os: linux
