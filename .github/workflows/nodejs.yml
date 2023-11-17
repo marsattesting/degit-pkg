@@ -38,5 +38,5 @@ jobs:
       with:
         entrypoint: dist/bin.js
         arch: x64
-        node-version: node-16
+        node-version: node16
         os: linux
