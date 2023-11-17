@@ -59,7 +59,8 @@ describe('degit', function() {
 		});
 	});
 
-	describe('gitlab', () => {
+	/** Gitlab a dû augmenter sa sécurité et refuse le degit */
+	/*describe('gitlab', () => {
 		[
 			'gitlab:Rich-Harris/degit-test-repo',
 			'git@gitlab.com:Rich-Harris/degit-test-repo',
@@ -72,7 +73,7 @@ describe('degit', function() {
 				});
 			});
 		});
-	});
+	});*/
 
 	describe('bitbucket', () => {
 		[
