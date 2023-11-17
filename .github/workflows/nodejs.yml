@@ -30,3 +30,8 @@ jobs:
         path: |
           dist
           !dist/**/*.map
+    - name: Package into node binary
+      uses: lando/pkg-action@v2
+      with:
+        entrypoint: dist/bin.js
+        node-version: ${{ matrix.node-version }}
