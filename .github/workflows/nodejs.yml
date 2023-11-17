@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         arch: ['x64']
-        node-version: [ '16.x','18.x','20.x' ]
+        node-version: [ '16.x','18.x' ]
         os: ['linux']
 
     steps:
