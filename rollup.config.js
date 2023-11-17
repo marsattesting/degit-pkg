@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { builtinModules } from 'module';
 import pkg from './package.json';
+import copy from 'rollup-plugin-copy'
 
 export default {
 	input: {
@@ -17,5 +18,9 @@ export default {
 		sourcemap: true
 	},
 	external: Object.keys(pkg.dependencies || {}).concat(builtinModules),
-	plugins: [resolve(), commonjs()]
+	plugins: [resolve(), commonjs(),
+		copy({
+			targets: [{ src: 'help.md', dest: 'dist/' }]
+		})
+	]
 };
