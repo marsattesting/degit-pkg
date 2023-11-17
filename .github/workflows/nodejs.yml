@@ -5,14 +5,16 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    
 
     strategy:
       matrix:
         arch: ['x64']
-        node-version: [ '16.x','18.x' ]
-        os: ['macos','win','linux']
+        node-version: [ '18.x' ]
+        #os: ['macos','win','linux']
+        os: ['ubuntu-latest','windows-latest']
 
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
@@ -33,10 +35,19 @@ jobs:
         path: |
           dist
           !dist/**/*.map
-    - name: Package into node binary
+    - name: Package into node binary Windows
+      if: matrix.os == 'windows-latest'
       uses: lando/pkg-action@v2
       with:
         entrypoint: dist/bin.js
         arch: x64
         node-version: node${{ matrix.node-version }}
-        os: ${{ matrix.os }}
+        os: win
+    - name: Package into node binary Windows
+      if: matrix.os == 'ubuntu-latest'
+      uses: lando/pkg-action@v2
+      with:
+        entrypoint: dist/bin.js
+        arch: x64
+        node-version: node${{ matrix.node-version }}
+        os: linux
