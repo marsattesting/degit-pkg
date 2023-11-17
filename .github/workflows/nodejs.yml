@@ -11,7 +11,7 @@ jobs:
       matrix:
         arch: ['x64']
         node-version: [ '16.x','18.x' ]
-        os: ['linux']
+        os: ['macos','win','linux']
 
     steps:
     - uses: actions/checkout@v4
@@ -39,4 +39,4 @@ jobs:
         entrypoint: dist/bin.js
         arch: x64
         node-version: node${{ matrix.node-version }}
-        os: linux
+        os: ${{ matrix.os }}
