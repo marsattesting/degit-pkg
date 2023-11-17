@@ -9,7 +9,9 @@ jobs:
 
     strategy:
       matrix:
+        arch: ['x64']
         node-version: [ '18' ]
+        OS: ['linux']
 
     steps:
     - uses: actions/checkout@v4
@@ -34,4 +36,6 @@ jobs:
       uses: lando/pkg-action@v2
       with:
         entrypoint: dist/bin.js
+        arch: ${{ matrix.arch }}
         node-version: ${{ matrix.node-version }}
+        os: ${{ matrix.os }}
